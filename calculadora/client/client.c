@@ -45,24 +45,19 @@ calculadora_1(char *host)
 		{    
 			case 1:
 				printf("Digite el primer numero: ");
-				scanf("%f",suma_1_arg.a);
+				scanf("%f", &suma_1_arg.a);
 				printf("Digite el segundo numero: ");
-				scanf("%f",suma_1_arg.b);
-
-				printf("............");
+				scanf("%f", &suma_1_arg.b);
 
 				result_1 = suma_1(&suma_1_arg, clnt);
 				if (result_1 == (float *) NULL) {
 					clnt_perror (clnt, "call failed");
 				}
-				else if(*result_1==TRUE)
-				{
-				  printf("\nSuma: %f",(*result_1));
-				}
 				else
 				{
-				  printf("\n Error inesperado");
+				  printf("\nSuma: %f\n",(*result_1));
 				}
+				
 				break;
 
 			case 2:
@@ -71,21 +66,33 @@ calculadora_1(char *host)
 				printf("Digite el segundo numero: ");
 				scanf("%f",&resta_1_arg.b);
 
-				result_2 = suma_1(&resta_1_arg, clnt);
+				result_2 = resta_1(&resta_1_arg, clnt);
 				if (result_2 == (float *) NULL) {
 					clnt_perror (clnt, "call failed");
 				}
-				else if(*result_2==TRUE)
+				else
 				{
-				  printf("\nSuma: %f",(*result_2));
+				  printf("\nResta: %f\n",(*result_2));
+				}
+				break;
+			
+			case 3:
+				printf("Digite el primer numero: ");
+				scanf("%f",&multiplicacion_1_arg.a);
+				printf("Digite el segundo numero: ");
+				scanf("%f",&multiplicacion_1_arg.b);
+
+				result_3 = multiplicacion_1(&multiplicacion_1_arg, clnt);
+				if (result_3 == (float *) NULL) {
+					clnt_perror (clnt, "call failed");
 				}
 				else
 				{
-				  printf("\n Error inesperado");
+				  printf("\nMultiplicacion: %f\n",(*result_3));
 				}
 				break;
 
-			case 3:
+			case 5:
 				exit(1);
 				break;
 		
