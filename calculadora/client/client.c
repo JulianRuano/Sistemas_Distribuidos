@@ -19,6 +19,7 @@ calculadora_1(char *host)
 	numbers  multiplicacion_1_arg;
 	float  *result_4;
 	numbers  division_1_arg;
+	division_1_arg.b = 0;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, calculadora, calculadora_version, "udp");
@@ -89,6 +90,25 @@ calculadora_1(char *host)
 				else
 				{
 				  printf("\nMultiplicacion: %f\n",(*result_3));
+				}
+				break;
+			
+			case 4:
+				printf("Digite el numerador : ");
+				scanf("%f",&division_1_arg.a);
+				
+				while (division_1_arg.b == 0)
+				{
+					printf("Digite el denominador // diferente de 0: ");
+					scanf("%f",&division_1_arg.b);
+				}			
+				result_4 = division_1(&division_1_arg, clnt);
+				if (result_4 == (float *) NULL) {
+					clnt_perror (clnt, "call failed");
+				}
+				else
+				{
+				  printf("\nDivision: %f\n",(*result_4));
 				}
 				break;
 
