@@ -6,60 +6,50 @@
 
 #include "calculadora.h"
 
-
-void
-calculadora_1(char *host)
+float *
+suma_1_svc(numbers *argp, struct svc_req *rqstp)
 {
-	CLIENT *clnt;
-	float  *result_1;
-	numbers  suma_1_arg;
-	float  *result_2;
-	numbers  resta_1_arg;
-	float  *result_3;
-	numbers  multiplicacion_1_arg;
-	float  *result_4;
-	numbers  division_1_arg;
+	static float  result;
 
-#ifndef	DEBUG
-	clnt = clnt_create (host, calculadora, calculadora_version, "udp");
-	if (clnt == NULL) {
-		clnt_pcreateerror (host);
-		exit (1);
-	}
-#endif	/* DEBUG */
+	/*
+	 * insert server code here
+	 */
 
-	result_1 = suma_1(&suma_1_arg, clnt);
-	if (result_1 == (float *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	result_2 = resta_1(&resta_1_arg, clnt);
-	if (result_2 == (float *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	result_3 = multiplicacion_1(&multiplicacion_1_arg, clnt);
-	if (result_3 == (float *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	result_4 = division_1(&division_1_arg, clnt);
-	if (result_4 == (float *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-#ifndef	DEBUG
-	clnt_destroy (clnt);
-#endif	 /* DEBUG */
+	return &result;
 }
 
-
-int
-main (int argc, char *argv[])
+float *
+resta_1_svc(numbers *argp, struct svc_req *rqstp)
 {
-	char *host;
+	static float  result;
 
-	if (argc < 2) {
-		printf ("usage: %s server_host\n", argv[0]);
-		exit (1);
-	}
-	host = argv[1];
-	calculadora_1 (host);
-exit (0);
+	/*
+	 * insert server code here
+	 */
+
+	return &result;
+}
+
+float *
+multiplicacion_1_svc(numbers *argp, struct svc_req *rqstp)
+{
+	static float  result;
+
+	/*
+	 * insert server code here
+	 */
+
+	return &result;
+}
+
+float *
+division_1_svc(numbers *argp, struct svc_req *rqstp)
+{
+	static float  result;
+
+	/*
+	 * insert server code here
+	 */
+
+	return &result;
 }
