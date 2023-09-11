@@ -12,9 +12,10 @@ gestion_anteproyectos_1(char *host)
 {
 	CLIENT *clnt;
 	bool_t  *result_1;
-	nodo_anteproyecto  registraranteproyectosistema_1_arg;
+//  nodo_anteproyecto  registraranteproyectosistema_1_arg;
+	nodo_anteproyecto objAnteproyecto;
 	nodo_anteproyecto  *result_2;
-	char * consultaranteproyecto_1_arg;
+	char * titulo;
 
 #ifndef	DEBUG
 	clnt = clnt_create (host, gestion_anteproyectos, gestion_anteproyectos_version, "udp");
