@@ -39,7 +39,7 @@ gestion_usuarios_1(char *host)
 		switch (opcion)
 		{
 		case 1:
-			printf("\nDigite su nombre de usuario: ");
+			printf("\nDigite usuario: ");
 			scanf("%s", abrirsesion_1_arg.usuario);
 			printf("\nDigite su contrasena: ");
 			scanf("%s", abrirsesion_1_arg.clave);
@@ -48,7 +48,7 @@ gestion_usuarios_1(char *host)
 			if (result_1 == (datos_usuario *) NULL) {
 				clnt_perror (clnt, "call failed");
 			}
-			else if (result_1->usuario == abrirsesion_1_arg.usuario)
+			else if (strcmp(result_1->usuario, abrirsesion_1_arg.usuario) == 0)
 			{
 				printf("\n================ Bienvenido ==================");
 				printf("\n|%s|", result_1->nombreCompleto);
@@ -78,7 +78,7 @@ gestion_usuarios_1(char *host)
 					if (result_2 == (bool_t *) NULL) {
 						clnt_perror (clnt, "call failed");
 					}
-					else if (result_2 == TRUE)
+					else if (*result_2 == TRUE)
 					{
 						printf("\n** Usuario registrado exitosamente **");
 					}

@@ -4,17 +4,17 @@
 # Parameters
 
 CLIENT = 
-SERVER = gestionUsuarios_server
+SERVER = calculadora_server
 
 SOURCES_CLNT.c = 
 SOURCES_CLNT.h = 
 SOURCES_SVC.c = server.c
-SOURCES_SVC.h = gestionUsuarios.h
-SOURCES.x = gestionUsuarios.x
+SOURCES_SVC.h = calculadora.h
+SOURCES.x = calculadora.x
 
-TARGETS_SVC.c =  gestionUsuarios_xdr.c  gestionUsuarios_svc.c   
-TARGETS_CLNT.c = gestionUsuarios_clnt.c gestionUsuarios_xdr.c
-TARGETS = gestionUsuarios.h gestionUsuarios_xdr.c gestionUsuarios_svc.c             
+TARGETS_SVC.c =       
+TARGETS_CLNT.c =       
+TARGETS =            
 
 OBJECTS_CLNT = $(SOURCES_CLNT.c:%.c=%.o) $(TARGETS_CLNT.c:%.c=%.o)
 OBJECTS_SVC = $(SOURCES_SVC.c:%.c=%.o) $(TARGETS_SVC.c:%.c=%.o)
