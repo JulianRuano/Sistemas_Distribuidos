@@ -3,7 +3,7 @@
  * It was generated using rpcgen.
  */
 
-#include "calculadora.h"
+#include "IgestionNotificaciones.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <rpc/pmap_clnt.h>
@@ -17,13 +17,10 @@
 #endif
 
 static void
-calculadora_1(struct svc_req *rqstp, register SVCXPRT *transp)
+gesprogram2_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
-		numbers suma_1_arg;
-		numbers resta_1_arg;
-		numbers multiplicacion_1_arg;
-		numbers division_1_arg;
+		int enviarnotificacion_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -34,28 +31,10 @@ calculadora_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		(void) svc_sendreply (transp, (xdrproc_t) xdr_void, (char *)NULL);
 		return;
 
-	case suma:
-		_xdr_argument = (xdrproc_t) xdr_numbers;
-		_xdr_result = (xdrproc_t) xdr_calculator_result;
-		local = (char *(*)(char *, struct svc_req *)) suma_1_svc;
-		break;
-
-	case resta:
-		_xdr_argument = (xdrproc_t) xdr_numbers;
-		_xdr_result = (xdrproc_t) xdr_calculator_result;
-		local = (char *(*)(char *, struct svc_req *)) resta_1_svc;
-		break;
-
-	case multiplicacion:
-		_xdr_argument = (xdrproc_t) xdr_numbers;
-		_xdr_result = (xdrproc_t) xdr_calculator_result;
-		local = (char *(*)(char *, struct svc_req *)) multiplicacion_1_svc;
-		break;
-
-	case division:
-		_xdr_argument = (xdrproc_t) xdr_numbers;
-		_xdr_result = (xdrproc_t) xdr_calculator_result;
-		local = (char *(*)(char *, struct svc_req *)) division_1_svc;
+	case enviarNotificacion:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_void;
+		local = (char *(*)(char *, struct svc_req *)) enviarnotificacion_1_svc;
 		break;
 
 	default:
@@ -83,15 +62,15 @@ main (int argc, char **argv)
 {
 	register SVCXPRT *transp;
 
-	pmap_unset (calculadora, calculadora_version);
+	pmap_unset (GESPROGRAM2, GESVER2);
 
 	transp = svcudp_create(RPC_ANYSOCK);
 	if (transp == NULL) {
 		fprintf (stderr, "%s", "cannot create udp service.");
 		exit(1);
 	}
-	if (!svc_register(transp, calculadora, calculadora_version, calculadora_1, IPPROTO_UDP)) {
-		fprintf (stderr, "%s", "unable to register (calculadora, calculadora_version, udp).");
+	if (!svc_register(transp, GESPROGRAM2, GESVER2, gesprogram2_1, IPPROTO_UDP)) {
+		fprintf (stderr, "%s", "unable to register (GESPROGRAM2, GESVER2, udp).");
 		exit(1);
 	}
 
@@ -100,8 +79,8 @@ main (int argc, char **argv)
 		fprintf (stderr, "%s", "cannot create tcp service.");
 		exit(1);
 	}
-	if (!svc_register(transp, calculadora, calculadora_version, calculadora_1, IPPROTO_TCP)) {
-		fprintf (stderr, "%s", "unable to register (calculadora, calculadora_version, tcp).");
+	if (!svc_register(transp, GESPROGRAM2, GESVER2, gesprogram2_1, IPPROTO_TCP)) {
+		fprintf (stderr, "%s", "unable to register (GESPROGRAM2, GESVER2, tcp).");
 		exit(1);
 	}
 

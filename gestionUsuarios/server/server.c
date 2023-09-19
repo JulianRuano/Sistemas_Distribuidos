@@ -8,6 +8,7 @@
 
 
 datos_usuario vectorUsuarios[5]; 
+int posUsuario=0;
 datos_usuario *
 abrirsesion_1_svc(datos_sesion *argp, struct svc_req *rqstp)
 {
@@ -25,7 +26,8 @@ abrirsesion_1_svc(datos_sesion *argp, struct svc_req *rqstp)
 		result = vectorUsuarios[0];
 		printf("\n ** Sesion iniciada con exito **\n");
 	} else {
-		printf("\n ** Error al iniciar sesion **\n");		
+		printf("\n ** Error al iniciar sesion **\n");
+		result.id = -1;		
 	}
 
 	return &result;
@@ -36,10 +38,18 @@ registrarusuarios_1_svc(datos_usuario *argp, struct svc_req *rqstp)
 {
 	static bool_t  result;
 
-	/*
-	 * insert server code here
-	 */
-
+	printf("\n ** registrar usuarios **\n");
+	if (posUsuario < 4)
+	{
+		posUsuario++;
+		vectorUsuarios[posUsuario] = *argp;
+		result = TRUE;
+		printf("\n ** Usuario registrado con exito **\n");
+	} 
+	else {
+		result = FALSE;
+		printf("\n ** Se alcanzo la cantidad maxima de usuarios a registrar  **\n");	
+	}
 	return &result;
 }
 
@@ -48,9 +58,23 @@ consultarusuario_1_svc(int *argp, struct svc_req *rqstp)
 {
 	static datos_usuario  result;
 
-	/*
-	 * insert server code here
-	 */
+	printf("\n ** consultar usuario **\n");
+	int i, bandera = 0;
+	for (i = 0; i < 5; i++)
+	{
+		if(vectorUsuarios[i].id == *argp )
+		{
+			result = vectorUsuarios[i];
+			bandera = 1;
+			break;
+		}
+	}
+	if (bandera == 0)
+	{
+		printf("\n ** Usuario no encontrado **\n");
+		result.id = -1;
+	}
+	
 
 	return &result;
 }
