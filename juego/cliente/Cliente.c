@@ -84,6 +84,8 @@ void gestion_usuarios_1(char *host)
 									printf("\n----------------");
 									printf(" Jugar");
 									printf(" -----------------\n");
+
+									iniciarjuego_1_arg = (*result_1).id;
 							
 									result_4 = iniciarjuego_1(&iniciarjuego_1_arg, clnt1);
 									if (result_4 == (void *) NULL) {
@@ -91,8 +93,6 @@ void gestion_usuarios_1(char *host)
 									}
 
 									printf("Se ha iniciado el juego\n");
-									
-
 									break;
 
 								case 2:

@@ -11,7 +11,11 @@ enviarnotificacion_1_svc(struct datos_juego *argp, struct svc_req *rqstp)
 {
 	static char * result;
 
-	printf("*** hay 2 jugadores, se inicia el juego ***\n");
+	printf("\n*** Informacion ***\n");
+	printf("\n Id juego:%d\n", argp->id_juego);
+	printf("\n Jugador 1%d\n", argp->id_jugador1);
+	printf("\n Jugador 2%d\n", argp->id_jugador2);
+
 
 	return (void *) &result;
 }

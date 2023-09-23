@@ -32,19 +32,37 @@ iniciarjuego_1_svc(int *argp, struct svc_req *rqstp)
 	printf("*** Juego Iniciado ***\n");
 	contador = contador + 1;
 
-	if (contador == 2)
+	if (contador == 1)
+	{		
+		//Guardar el id del jugador 1
+		printf("*** Jugador 1: %d ***\n", *argp);
+		enviarnotificacion_1_arg.id_jugador1 = *argp;
+		
+	}else
 	{
+		//Verificar que no sea el mismo jugador
+		if (*argp == enviarnotificacion_1_arg.id_jugador1)
+		{
+			printf("*** Jugador 1 y Jugador 2 son el mismo ***\n");
+			result = "Jugador 1 y Jugador 2 son el mismo";
+			return (void *) &result;
+		}
+		//Guardar el id del jugador 2
+		printf("*** Jugador 2: %d ***\n", *argp);
+		enviarnotificacion_1_arg.id_jugador2 = *argp;
+
+		//Guardar el id del juego
+		enviarnotificacion_1_arg.id_juego = contador;
+
+		//Enviar notificacion a los jugadores
 		result_1 = enviarnotificacion_1(&enviarnotificacion_1_arg, clnt);
 		if (result_1 == (void *) NULL) {
-		clnt_perror (clnt, "call failed");
+			clnt_perror (clnt, "call failed");
 		}
-
 		printf("*** hay 2 jugadores, enviar notificacion ***\n");
-		
 	}
 	
-	
-
-
 	return (void *) &result;
 }
+
+

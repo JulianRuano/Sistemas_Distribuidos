@@ -16,17 +16,18 @@ abrirsesion_1_svc(datos_sesion *argp, struct svc_req *rqstp)
 	static datos_usuario  result;
 
 	vectorUsuarios[0].id = 0;
-    strcpy(vectorUsuarios[0].nombreCompleto, "Jhonmaro Campo");
-    vectorUsuarios[0].edad = 30;
+    strcpy(vectorUsuarios[0].nombreCompleto, "Administrador");
+    vectorUsuarios[0].edad = 0;
     strcpy(vectorUsuarios[0].usuario, "admin");
-    strcpy(vectorUsuarios[0].clave, "1234");
-	int i;
+    strcpy(vectorUsuarios[0].clave, "admin");
+	int i, bandera = 0;
+	
 
 	printf("\n Servidor: Iniciar sesion\n");
 	if((argp->id == vectorUsuarios[0].id) && strcmp(argp->usuario, vectorUsuarios[0].usuario) == 0 && strcmp(argp->clave, vectorUsuarios[0].clave) == 0)
 	{
 		result.id = 0;
-		printf("\n Servidor: Sesion iniciada Admin");
+		printf("\n Servidor: Sesion iniciada Admin\n");
 		return &result;
     }
 	
@@ -35,15 +36,16 @@ abrirsesion_1_svc(datos_sesion *argp, struct svc_req *rqstp)
 		if(argp->id == vectorUsuarios[i].id)
 		{
 			result = vectorUsuarios[i];
-			printf("\n Servidor: Sesion iniciada jugador");
+			printf("\n Servidor: Sesion iniciada jugador %d\n",vectorUsuarios[i].id);
 			result.id = vectorUsuarios[i].id;
+			bandera = 1;
 			break;
-		}
-		else
-		{
-			printf("\n Servidor: Usuario o clave incorrectos");
-			result.id = -1;
-		}
+		}	
+	}
+	if(bandera == 0)
+	{
+		printf("\n Servidor: Usuario no encontrado\n");
+		result.id = -1;
 	}
 	
 
@@ -60,12 +62,12 @@ registrarusuarios_1_svc(datos_usuario *argp, struct svc_req *rqstp)
 	{
 		vectorUsuarios[posUsuarios]=*argp;
 		posUsuarios++;
-		printf("\n Servidor: Usuario registrado");
+		printf("\n Servidor: Usuario registrado\n");
 		result = TRUE;
 	}
 	else
 	{
-		printf("\n Servidor: Cantidad maxima de usuarios alcanzada");
+		printf("\n Servidor: Cantidad maxima de usuarios alcanzada\n");
 		result = FALSE;
 	}
 
@@ -86,7 +88,7 @@ consultarusuario_1_svc(int *argp, struct svc_req *rqstp)
 		{
 			result = vectorUsuarios[i];
 			bandera = 1;
-			printf("\n Servidor: Usuario encontrado");
+			printf("\n Servidor: Usuario encontrado\n");
 			break;
 		}
 	}
