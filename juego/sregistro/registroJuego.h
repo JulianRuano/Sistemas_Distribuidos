@@ -13,13 +13,14 @@
 extern "C" {
 #endif
 
-#define MAXNOM 30
-#define MAXDAT 12
+#define RMAXDAT 20
 
 struct datos_juego {
 	int id_juego;
+	char fecha[RMAXDAT];
 	int id_jugador1;
 	int id_jugador2;
+	int ganador;
 };
 typedef struct datos_juego datos_juego;
 
@@ -30,12 +31,18 @@ typedef struct datos_juego datos_juego;
 #define enviarNotificacion 1
 extern  void * enviarnotificacion_1(struct datos_juego *, CLIENT *);
 extern  void * enviarnotificacion_1_svc(struct datos_juego *, struct svc_req *);
+#define historial 2
+extern  datos_juego * historial_1(int *, CLIENT *);
+extern  datos_juego * historial_1_svc(int *, struct svc_req *);
 extern int registro_juego_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define enviarNotificacion 1
 extern  void * enviarnotificacion_1();
 extern  void * enviarnotificacion_1_svc();
+#define historial 2
+extern  datos_juego * historial_1();
+extern  datos_juego * historial_1_svc();
 extern int registro_juego_1_freeresult ();
 #endif /* K&R C */
 

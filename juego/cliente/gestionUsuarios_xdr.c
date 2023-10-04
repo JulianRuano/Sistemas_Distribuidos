@@ -13,10 +13,10 @@ xdr_datos_sesion (XDR *xdrs, datos_sesion *objp)
 	int i;
 	 if (!xdr_int (xdrs, &objp->id))
 		 return FALSE;
-	 if (!xdr_vector (xdrs, (char *)objp->usuario, MAXDAT,
+	 if (!xdr_vector (xdrs, (char *)objp->usuario, UMAXDAT,
 		sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
-	 if (!xdr_vector (xdrs, (char *)objp->clave, MAXDAT,
+	 if (!xdr_vector (xdrs, (char *)objp->clave, UMAXDAT,
 		sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
 	return TRUE;
@@ -30,15 +30,15 @@ xdr_datos_usuario (XDR *xdrs, datos_usuario *objp)
 	int i;
 	 if (!xdr_int (xdrs, &objp->id))
 		 return FALSE;
-	 if (!xdr_vector (xdrs, (char *)objp->nombreCompleto, MAXNOM,
+	 if (!xdr_vector (xdrs, (char *)objp->nombreCompleto, UMAXNOM,
 		sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
 	 if (!xdr_int (xdrs, &objp->edad))
 		 return FALSE;
-	 if (!xdr_vector (xdrs, (char *)objp->usuario, MAXDAT,
+	 if (!xdr_vector (xdrs, (char *)objp->usuario, UMAXDAT,
 		sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
-	 if (!xdr_vector (xdrs, (char *)objp->clave, MAXDAT,
+	 if (!xdr_vector (xdrs, (char *)objp->clave, UMAXDAT,
 		sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
 	return TRUE;

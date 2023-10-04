@@ -4,17 +4,18 @@
 # Parameters
 
 CLIENT = cliente
-SERVER = 
+SERVER =
 
-SOURCES_CLNT.c = Cliente.c
+SOURCES_CLNT.c = client.c
 SOURCES_CLNT.h = gestionUsuarios.h gestionJuego.h
 SOURCES_SVC.c = 
 SOURCES_SVC.h = 
 SOURCES.x = gestionUsuarios.x
 
-TARGETS_SVC.c = gestionUsuarios_svc.c   gestionUsuarios_xdr.c  
-TARGETS_CLNT.c = gestionUsuarios_clnt.c   gestionUsuarios_xdr.c gestionJuego_clnt.c
-TARGETS = gestionUsuarios.h gestionUsuarios_xdr.c gestionUsuarios_clnt.c gestionUsuarios_svc.c  gestionJuego.h   gestionJuego_clnt.c  
+TARGETS_SVC.c = gestionUsuarios_xdr.c gestionJuego_xdr.c 
+TARGETS_CLNT.c = gestionUsuarios_clnt.c   gestionUsuarios_xdr.c  gestionJuego_clnt.c   gestionJuego_xdr.c 
+TARGETS = gestionUsuarios.h gestionUsuarios_xdr.c gestionUsuarios_clnt.c gestionJuego.h gestionJuego_xdr.c gestionJuego_clnt.c      
+
 OBJECTS_CLNT = $(SOURCES_CLNT.c:%.c=%.o) $(TARGETS_CLNT.c:%.c=%.o)
 OBJECTS_SVC = $(SOURCES_SVC.c:%.c=%.o) $(TARGETS_SVC.c:%.c=%.o)
 # Compiler flags 

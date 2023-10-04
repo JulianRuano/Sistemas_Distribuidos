@@ -6,16 +6,15 @@
 
 #include "gestionUsuarios.h"
 
-datos_usuario vectorUsuarios[5];
+datos_usuario vectorUsuarios[6];
 int posUsuarios=1;
-
 
 datos_usuario *
 abrirsesion_1_svc(datos_sesion *argp, struct svc_req *rqstp)
 {
 	static datos_usuario  result;
 
-	vectorUsuarios[0].id = 0;
+    vectorUsuarios[0].id = 0;
     strcpy(vectorUsuarios[0].nombreCompleto, "Administrador");
     vectorUsuarios[0].edad = 0;
     strcpy(vectorUsuarios[0].usuario, "admin");

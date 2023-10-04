@@ -21,6 +21,14 @@ gestion_juego_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
 		int iniciarjuego_1_arg;
+		config_juego enviarconfiguracion_1_arg;
+		info_color enviarcolores_1_arg;
+		int actualizartablerocolor_1_arg;
+		info_espiga enviarespigas_1_arg;
+		int actualizartableroespiga_1_arg;
+		int puntuacion_1_arg;
+		int enviarconfirmacion_1_arg;
+		int consulta_1_arg;
 	} argument;
 	char *result;
 	xdrproc_t _xdr_argument, _xdr_result;
@@ -33,8 +41,68 @@ gestion_juego_1(struct svc_req *rqstp, register SVCXPRT *transp)
 
 	case iniciarJuego:
 		_xdr_argument = (xdrproc_t) xdr_int;
-		_xdr_result = (xdrproc_t) xdr_void;
+		_xdr_result = (xdrproc_t) xdr_int;
 		local = (char *(*)(char *, struct svc_req *)) iniciarjuego_1_svc;
+		break;
+
+	case enviarconfiguracion:
+		_xdr_argument = (xdrproc_t) xdr_config_juego;
+		_xdr_result = (xdrproc_t) xdr_void;
+		local = (char *(*)(char *, struct svc_req *)) enviarconfiguracion_1_svc;
+		break;
+
+	case configuracion:
+		_xdr_argument = (xdrproc_t) xdr_void;
+		_xdr_result = (xdrproc_t) xdr_config_juego;
+		local = (char *(*)(char *, struct svc_req *)) configuracion_1_svc;
+		break;
+
+	case enviarColores:
+		_xdr_argument = (xdrproc_t) xdr_info_color;
+		_xdr_result = (xdrproc_t) xdr_bool;
+		local = (char *(*)(char *, struct svc_req *)) enviarcolores_1_svc;
+		break;
+
+	case actualizarTableroColor:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_info_color;
+		local = (char *(*)(char *, struct svc_req *)) actualizartablerocolor_1_svc;
+		break;
+
+	case enviarEspigas:
+		_xdr_argument = (xdrproc_t) xdr_info_espiga;
+		_xdr_result = (xdrproc_t) xdr_bool;
+		local = (char *(*)(char *, struct svc_req *)) enviarespigas_1_svc;
+		break;
+
+	case actualizarTableroEspiga:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_info_espiga;
+		local = (char *(*)(char *, struct svc_req *)) actualizartableroespiga_1_svc;
+		break;
+
+	case puntuacion:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_fin_juego;
+		local = (char *(*)(char *, struct svc_req *)) puntuacion_1_svc;
+		break;
+
+	case enviarConfirmacion:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_void;
+		local = (char *(*)(char *, struct svc_req *)) enviarconfirmacion_1_svc;
+		break;
+
+	case estadoJuego:
+		_xdr_argument = (xdrproc_t) xdr_void;
+		_xdr_result = (xdrproc_t) xdr_int;
+		local = (char *(*)(char *, struct svc_req *)) estadojuego_1_svc;
+		break;
+
+	case consulta:
+		_xdr_argument = (xdrproc_t) xdr_int;
+		_xdr_result = (xdrproc_t) xdr_data_juego;
+		local = (char *(*)(char *, struct svc_req *)) consulta_1_svc;
 		break;
 
 	default:

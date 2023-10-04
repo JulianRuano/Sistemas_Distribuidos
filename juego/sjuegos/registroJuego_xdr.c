@@ -10,11 +10,17 @@ xdr_datos_juego (XDR *xdrs, datos_juego *objp)
 {
 	register int32_t *buf;
 
+	int i;
 	 if (!xdr_int (xdrs, &objp->id_juego))
+		 return FALSE;
+	 if (!xdr_vector (xdrs, (char *)objp->fecha, RMAXDAT,
+		sizeof (char), (xdrproc_t) xdr_char))
 		 return FALSE;
 	 if (!xdr_int (xdrs, &objp->id_jugador1))
 		 return FALSE;
 	 if (!xdr_int (xdrs, &objp->id_jugador2))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->ganador))
 		 return FALSE;
 	return TRUE;
 }

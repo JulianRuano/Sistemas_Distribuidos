@@ -13,22 +13,22 @@
 extern "C" {
 #endif
 
-#define MAXNOM 30
-#define MAXDAT 12
+#define UMAXNOM 64
+#define UMAXDAT 20
 
 struct datos_sesion {
 	int id;
-	char usuario[MAXDAT];
-	char clave[MAXDAT];
+	char usuario[UMAXDAT];
+	char clave[UMAXDAT];
 };
 typedef struct datos_sesion datos_sesion;
 
 struct datos_usuario {
 	int id;
-	char nombreCompleto[MAXNOM];
+	char nombreCompleto[UMAXNOM];
 	int edad;
-	char usuario[MAXDAT];
-	char clave[MAXDAT];
+	char usuario[UMAXDAT];
+	char clave[UMAXDAT];
 };
 typedef struct datos_usuario datos_usuario;
 

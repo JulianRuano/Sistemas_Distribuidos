@@ -4,17 +4,17 @@
 # Parameters
 
 CLIENT = 
-SERVER = server2
+SERVER = server1
 
 SOURCES_CLNT.c = 
 SOURCES_CLNT.h = 
-SOURCES_SVC.c = server2.c
-SOURCES_SVC.h = registroJuego.h gestionJuego.h
-SOURCES.x = gestionJuego.x
+SOURCES_SVC.c = server.c
+SOURCES_SVC.h = gestionUsuarios.h
+SOURCES.x = gestionUsuarios.x
 
-TARGETS_SVC.c = gestionJuego_svc.c  registroJuego_clnt.c registroJuego_xdr.c
-TARGETS_CLNT.c =       
-TARGETS = gestionJuego.h     gestionJuego_svc.c    
+TARGETS_SVC.c = gestionUsuarios_svc.c   gestionUsuarios_xdr.c 
+TARGETS_CLNT.c =     gestionUsuarios_xdr.c 
+TARGETS = gestionUsuarios.h gestionUsuarios_xdr.c   gestionUsuarios_svc.c    
 
 OBJECTS_CLNT = $(SOURCES_CLNT.c:%.c=%.o) $(TARGETS_CLNT.c:%.c=%.o)
 OBJECTS_SVC = $(SOURCES_SVC.c:%.c=%.o) $(TARGETS_SVC.c:%.c=%.o)
