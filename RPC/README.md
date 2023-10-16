@@ -111,7 +111,7 @@ rpce calculadora.x
 
 Esto generará automáticamente lo siguiente:
 
-![Client/Server](img/image.png)
+![Client/Server](/img/image.png)
 
 ```bash
 client
