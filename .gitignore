@@ -54,4 +54,5 @@ dkms.conf
 #visual studio
 **/.vscode/
 
-
+#Java
+*.class
