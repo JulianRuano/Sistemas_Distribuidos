@@ -152,9 +152,7 @@ server
 
 ### implementación del cliente
 
-Para el cliente, vamos a agregar el código en el archivo**client.c**
-
-[codigo del cliente](./calculadora/client/client.c)
+Para el cliente, vamos a agregar el código en el archivo**client.c** [codigo del cliente](./calculadora/client/client.c)
 
 
 #### MakeC
@@ -178,8 +176,7 @@ TARGETS = calculadora.h calculadora_xdr.c calculadora_clnt.c
 ```
 
 ### implementación del servidor
-Para el servidor, vamos a agregar el código en el archivo **server.c**.
-[codigo del cliente](./calculadora/server/server.c)
+Para el servidor, vamos a agregar el código en el archivo **server.c**. [codigo del cliente](./calculadora/server/server.c)
 
 #### MakeS
 
@@ -208,7 +205,7 @@ Ms
 ```
 Generará un archivo llamado **calculadora_server**, que fue el nombre que definimos en el archivo 
 
-MakeS: *SERVER = calculadora_server*
+*SERVER = calculadora_server*
 
 Para ejecutar el servidor, utiliza el siguiente comando:
 ```bash
@@ -217,7 +214,7 @@ Para ejecutar el servidor, utiliza el siguiente comando:
 
 Realizamos lo mismo para el cliente.
 
-MakeC: *CLIENT = calculadora_client*
+*CLIENT = calculadora_client*
 > [!NOTE]
 > Para evitar errores, es necesario lanzar primero el servidor.
 
