@@ -1,5 +1,4 @@
-
-package servidor1.utilidades;
+package sjuego.utilidades;
 
 
 import java.net.MalformedURLException;
@@ -26,7 +25,7 @@ public class UtilidadesRegistroS
 			System.out.println("El registro RMI no se localizó");
 
 			Registry registro = LocateRegistry.createRegistry(numPuertoNS);
-			System.out.println("El registro se ha creado "+registro);
+			System.out.println("El registro se ha creado "+ registro);
 		}
 
 	}

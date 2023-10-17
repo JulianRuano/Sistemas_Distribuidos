@@ -26,7 +26,7 @@ public class UtilidadesRegistroS{
 			System.out.println("El registro RMI no se localizó");
 
 			Registry registro = LocateRegistry.createRegistry(numPuertoNS);
-			System.out.println("El registro se ha creado ");
+			System.out.println("El registro se ha creado "+registro);
 		}
 
 	}
